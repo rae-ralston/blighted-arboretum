@@ -7,9 +7,9 @@ func add_spores(amount: float) -> void:
 	spores += amount
 	spores_changed.emit(spores)
 
-func spend_spores(amount: float ) -> bool:
-	if spores >= amount:
-		spores -= amount
-		spores_changed.emit(spores)
-		return true
-	return false
+func spend_spores(amount: float) -> void:
+	spores -= amount
+	spores_changed.emit(spores)
+
+func can_spend_spores(amount: float) -> bool:
+	return spores >= amount

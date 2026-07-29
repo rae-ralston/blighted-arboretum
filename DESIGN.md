@@ -110,6 +110,34 @@ Each state generates more spores. Full transformation of a room unlocks the next
 
 ---
 
+## Build TODO
+
+### 1. Animation (highest impact on feel)
+- [ ] Pulse shader on active `Line2D` paths
+- [ ] Crawl animation when opening a path (mycelium spreading along the line)
+- [ ] Node awakening animation when a node becomes connected
+
+### 2. Visual Affordance (makes the puzzle readable)
+- [ ] Hover highlight on reachable-but-locked paths
+- [ ] Nodes visually distinguish connected vs dormant state
+- [ ] "Can't afford" feedback when clicking a path without enough spores
+
+### 3. Room Layout (reveals puzzle depth)
+- [ ] Redesign DemoRoom with branching paths and real routing decisions
+- [ ] Mix of TARGET and BONUS nodes at meaningful positions
+- [ ] At least one path that requires a routing choice
+
+### 4. Win Condition (gives the room purpose)
+- [ ] Track how many TARGET nodes are connected
+- [ ] Trigger room complete state when all targets connected
+- [ ] Room complete UI feedback
+
+### 5. Background + Atmosphere (cheap wins)
+- [ ] Dark background color on DemoRoom
+- [ ] Basic atmosphere pass once above items are in
+
+---
+
 ## Open Questions
 
 - Prestige currency name (Rot Essence, Spore Memory, etc.)
