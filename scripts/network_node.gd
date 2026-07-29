@@ -6,14 +6,14 @@ enum	 NodeType { HEART, STANDARD, TARGET, BONUS }
 @export var node_type: NodeType = NodeType.STANDARD
 @export var spore_rate: float = 1.0
 
-var is_connected: bool = false
+var connected: bool = false
 
 func _ready() -> void:
 	if node_type == NodeType.HEART:
 		set_connected(true)
 
 func _process(delta: float) -> void:
-	if is_connected:
+	if connected:
 		GameManager.add_spores(spore_rate * delta)
 
 func _draw() -> void:
@@ -32,5 +32,5 @@ func _draw() -> void:
 	draw_circle(Vector2.ZERO, 24.0, color)
 
 func set_connected(value: bool) -> void:
-	is_connected = value
+	connected = value
 	queue_redraw()

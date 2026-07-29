@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cdx6m3y7pa7e1" path="res://scenes/components/PathSegment.tscn" id="2_10jpl"]
 [ext_resource type="Script" uid="uid://dxcdbl1xubkua" path="res://scripts/ui_spore_count.gd" id="3_ippak"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ippak"]
+
 [node name="DemoRoom" type="Node2D" unique_id=1185710402]
+material = SubResource("ShaderMaterial_ippak")
 
 [node name="NodeAndPaths" type="Node2D" parent="." unique_id=1128206970]
 
