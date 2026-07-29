@@ -2,28 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://dc8hikds8p7p8" path="res://scenes/components/NetworkNode.tscn" id="1_yrf7v"]
 [ext_resource type="PackedScene" uid="uid://cdx6m3y7pa7e1" path="res://scenes/components/PathSegment.tscn" id="2_10jpl"]
+[ext_resource type="Script" uid="uid://dxcdbl1xubkua" path="res://scripts/ui_spore_count.gd" id="3_ippak"]
 
 [node name="DemoRoom" type="Node2D" unique_id=1185710402]
 
-[node name="Standard" parent="." unique_id=707529808 instance=ExtResource("1_yrf7v")]
+[node name="NodeAndPaths" type="Node2D" parent="." unique_id=1128206970]
+
+[node name="Standard" parent="NodeAndPaths" unique_id=707529808 instance=ExtResource("1_yrf7v")]
 position = Vector2(708, 196)
 
-[node name="Start" parent="." unique_id=732191555 instance=ExtResource("1_yrf7v")]
+[node name="Start" parent="NodeAndPaths" unique_id=732191555 instance=ExtResource("1_yrf7v")]
 position = Vector2(912, 188)
 node_type = 0
 
-[node name="End" parent="." unique_id=1468419118 instance=ExtResource("1_yrf7v")]
+[node name="End" parent="NodeAndPaths" unique_id=1468419118 instance=ExtResource("1_yrf7v")]
 position = Vector2(204, 534)
 node_type = 2
 
-[node name="PathStandStart" parent="." unique_id=2019674467 node_paths=PackedStringArray("start_node", "end_node") instance=ExtResource("2_10jpl")]
+[node name="PathStandStart" parent="NodeAndPaths" unique_id=2019674467 node_paths=PackedStringArray("start_node", "end_node") instance=ExtResource("2_10jpl")]
 start_node = NodePath("../Standard")
 end_node = NodePath("../Start")
 
-[node name="PathStartEnd" parent="." unique_id=2109778931 node_paths=PackedStringArray("start_node", "end_node") instance=ExtResource("2_10jpl")]
+[node name="PathStartEnd" parent="NodeAndPaths" unique_id=2109778931 node_paths=PackedStringArray("start_node", "end_node") instance=ExtResource("2_10jpl")]
 start_node = NodePath("../Start")
 end_node = NodePath("../End")
 
-[node name="PathStandEnd" parent="." unique_id=2027399827 node_paths=PackedStringArray("start_node", "end_node") instance=ExtResource("2_10jpl")]
+[node name="PathStandEnd" parent="NodeAndPaths" unique_id=2027399827 node_paths=PackedStringArray("start_node", "end_node") instance=ExtResource("2_10jpl")]
 start_node = NodePath("../Standard")
 end_node = NodePath("../End")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1658584025]
+
+[node name="SporeCount" type="Label" parent="UI" unique_id=1141952265]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_ippak")
