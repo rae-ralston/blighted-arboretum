@@ -1,5 +1,9 @@
 extends Node2D
 
+var PULSE_SHADER = preload("res://shaders/pulse.gdshader")
+
+
+
 @onready var line: Line2D = $Line2D
 
 @export var start_node: NetworkNode
@@ -9,6 +13,12 @@ extends Node2D
 var is_open: bool = false
 
 func _ready() -> void:
+	var gradient = Gradient.new()
+	var grad_texture = GradientTexture1D.new()
+	grad_texture.gradient = gradient
+	
+	line.texture = grad_texture
+	line.texture_mode = Line2D.LINE_TEXTURE_STRETCH
 	line.points = [start_node.global_position, end_node.global_position]
 	line.default_color = Color(0.2, 0.1, 0.2)
 	line.width = 2.0
@@ -33,7 +43,7 @@ func _click_is_near_line(event: InputEvent) -> bool:
 	return false
 
 func _is_reachable() -> bool:
-	return start_node.is_connected or end_node.is_connected
+	return start_node.connected or end_node.connected
 
 func _unhandled_input(event: InputEvent) -> void:
 	if _click_is_near_line(event):
@@ -45,10 +55,21 @@ func open() -> void:
 	is_open = true
 	GameManager.spend_spores(spore_cost)
 	
-	if start_node.is_connected:
+	if start_node.connected:
 		end_node.set_connected(true)
 	else:
 		start_node.set_connected(true)
-	
+		
 	line.default_color = Color(1.0, 0.7, 0.1)
 	line.width = 4.0
+	
+	var pulseMaterial = ShaderMaterial.new()
+	pulseMaterial.shader = PULSE_SHADER
+	pulseMaterial.set_shader_parameter("progress", 0.0)
+	line.material = pulseMaterial
+
+	var tween = create_tween()
+	tween.tween_method(
+		func(v): pulseMaterial.set_shader_parameter("progress", v),
+		0.0, 1.0, 1.5
+	)

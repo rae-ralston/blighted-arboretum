@@ -1,7 +1,7 @@
 extends Node
 
 signal spores_changed(new_amount: float)
-var spores: float = 0.0
+var spores: float = 10.0
 
 func add_spores(amount: float) -> void:
 	spores += amount
