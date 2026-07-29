@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cdx6m3y7pa7e1"]
+
+[ext_resource type="Script" uid="uid://c0duqq5gobfqn" path="res://scripts/path_segment.gd" id="1_oa1mo"]
+
+[node name="PathSegment" type="Node2D" unique_id=2019674467]
+script = ExtResource("1_oa1mo")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2095472719]
