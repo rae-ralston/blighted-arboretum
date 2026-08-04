@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="NodeDefinition" format=3 uid="uid://xd5ddyftbdl5"]
+
+[ext_resource type="Script" uid="uid://dh1k6yby3m11f" path="res://scripts/node_definition.gd" id="1_bey5v"]
+
+[resource]
+script = ExtResource("1_bey5v")
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"

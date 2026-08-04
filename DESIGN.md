@@ -35,6 +35,7 @@ The garden resets seasonally. The blight's network carries forward in strength. 
 - Procedural room arrangement on the meta-map (map generation)
 - Depth layer: going underground after consuming the surface
 - Adjacent estates: spreading beyond the arboretum
+- Procedural path cost derivation (from length, node types, transformation stage) — prerequisite for map generation
 
 ---
 
@@ -44,6 +45,8 @@ The garden resets seasonally. The blight's network carries forward in strength. 
 Each room contains nodes (dead plants, buried bulbs, moisture pools) connected by pre-defined growth channels: cracks in flagstone, exposed root channels, gaps between stones. The player spends **spores** to open a path segment. Opening a path extends the network to the next node, which begins generating spores passively.
 
 The puzzle is in the ordering and routing. Paths branch. Not everything can be opened at once. Some nodes only activate when connected *through* a specific upstream node type — order of operations matters.
+
+**Path costs:** Each path has a spore cost set per-path in the editor (exported variable). This enables bottleneck layouts where a direct route costs more than going around through intermediate nodes. *Long-term: derive cost procedurally from path length, endpoint node types, or transformation stage — needed before map generation is viable.*
 
 ### Depth Layer — Node Placement (light Model B)
 Unlocked through upgrades. Special fungal node types can be placed along open paths to modify flow: amplifiers, spreaders, catalysts. This layer adds combinatorial depth without being the core interaction.
@@ -113,9 +116,9 @@ Each state generates more spores. Full transformation of a room unlocks the next
 ## Build TODO
 
 ### 1. Animation (highest impact on feel)
-- [ ] Pulse shader on active `Line2D` paths
-- [ ] Crawl animation when opening a path (mycelium spreading along the line)
-- [ ] Node awakening animation when a node becomes connected
+- [x] Pulse shader on active `Line2D` paths
+- [x] Crawl animation when opening a path (mycelium spreading along the line)
+- [ ] Node awakening animation when a node becomes connected — IN PROGRESS: add `draw_radius: float = 24.0` var to NetworkNode, use in `_draw()`, tween 24→38→24 in `set_connected()`
 
 ### 2. Visual Affordance (makes the puzzle readable)
 - [ ] Hover highlight on reachable-but-locked paths
