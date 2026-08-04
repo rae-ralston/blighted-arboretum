@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomLayout" format=3 uid="uid://dhgfsm8g4bla8"]
+
+[ext_resource type="Script" uid="uid://dh1k6yby3m11f" path="res://scripts/node_definition.gd" id="1_nfiyi"]
+[ext_resource type="Script" uid="uid://mbweug370aun" path="res://scripts/path_definition.gd" id="2_l6slw"]
+[ext_resource type="Script" uid="uid://i260io3polix" path="res://scripts/room_layout.gd" id="3_whent"]
+
+[resource]
+script = ExtResource("3_whent")
+metadata/_custom_type_script = "uid://i260io3polix"

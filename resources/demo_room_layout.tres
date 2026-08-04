@@ -1,0 +1,110 @@
+[gd_resource type="Resource" script_class="RoomLayout" format=3 uid="uid://bbbnw38u1nybi"]
+
+[ext_resource type="Script" uid="uid://dh1k6yby3m11f" path="res://scripts/node_definition.gd" id="1_r27qy"]
+[ext_resource type="Script" uid="uid://mbweug370aun" path="res://scripts/path_definition.gd" id="2_awipt"]
+[ext_resource type="Script" uid="uid://i260io3polix" path="res://scripts/room_layout.gd" id="3_d1lk5"]
+
+[sub_resource type="Resource" id="Resource_r27qy"]
+script = ExtResource("1_r27qy")
+node_name = "Start"
+node_type = 0
+position = Vector2(144, 558)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_awipt"]
+script = ExtResource("1_r27qy")
+node_name = "Long1"
+position = Vector2(246, 360)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_d1lk5"]
+script = ExtResource("1_r27qy")
+node_name = "Long2"
+position = Vector2(380, 258)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_1nvuo"]
+script = ExtResource("1_r27qy")
+node_name = "Long3"
+position = Vector2(650, 216)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_2smda"]
+script = ExtResource("1_r27qy")
+node_name = "Long4"
+position = Vector2(852, 348)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_ptyk1"]
+script = ExtResource("1_r27qy")
+node_name = "Bonus"
+node_type = 3
+position = Vector2(948, 138)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_3wggq"]
+script = ExtResource("1_r27qy")
+node_name = "Short"
+position = Vector2(586, 564)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_3kmuh"]
+script = ExtResource("1_r27qy")
+node_name = "End"
+node_type = 2
+position = Vector2(1020, 534)
+metadata/_custom_type_script = "uid://dh1k6yby3m11f"
+
+[sub_resource type="Resource" id="Resource_gouil"]
+script = ExtResource("2_awipt")
+from_node = "Start"
+to_node = "Long1"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_du6r3"]
+script = ExtResource("2_awipt")
+from_node = "Long1"
+to_node = "Long2"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_qmyby"]
+script = ExtResource("2_awipt")
+from_node = "Long2"
+to_node = "Long3"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_bnnjx"]
+script = ExtResource("2_awipt")
+from_node = "Long3"
+to_node = "Long4"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_yhisk"]
+script = ExtResource("2_awipt")
+from_node = "Long4"
+to_node = "Bonus"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_ol8c0"]
+script = ExtResource("2_awipt")
+from_node = "Long4"
+to_node = "End"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_xn1co"]
+script = ExtResource("2_awipt")
+from_node = "Start"
+to_node = "Short"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[sub_resource type="Resource" id="Resource_8pe0v"]
+script = ExtResource("2_awipt")
+from_node = "Short"
+to_node = "End"
+metadata/_custom_type_script = "uid://mbweug370aun"
+
+[resource]
+script = ExtResource("3_d1lk5")
+nodes = Array[ExtResource("1_r27qy")]([SubResource("Resource_r27qy"), SubResource("Resource_awipt"), SubResource("Resource_d1lk5"), SubResource("Resource_1nvuo"), SubResource("Resource_2smda"), SubResource("Resource_ptyk1"), SubResource("Resource_3wggq"), SubResource("Resource_3kmuh")])
+paths = Array[ExtResource("2_awipt")]([SubResource("Resource_gouil"), SubResource("Resource_du6r3"), SubResource("Resource_qmyby"), SubResource("Resource_bnnjx"), SubResource("Resource_yhisk"), SubResource("Resource_ol8c0"), SubResource("Resource_xn1co"), SubResource("Resource_8pe0v")])
+metadata/_custom_type_script = "uid://i260io3polix"
