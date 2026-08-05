@@ -63,7 +63,24 @@ Nodes and sections of the arboretum move through visual states:
 Dead → Infected → Consumed → Transformed
 ```
 
-Each state generates more spores. Full transformation of a room unlocks the next.
+Each stage generates more spores. Full transformation of a room unlocks the next.
+
+**Trigger:** The player spends spores to advance a node's transformation stage. This competes directly with opening new paths — deepen what you have, or expand outward.
+
+**Interaction:** Click a connected node to advance it to the next stage (if affordable). Unconnected nodes cannot be transformed. A hover panel with node-specific information will be added later; click-to-transform is the initial implementation.
+
+**Spore rate multipliers:** 1x → 1.5x → 2x → 3x across the four stages. Exact values to be tuned by feel.
+
+**Costs:** Progressively more expensive per stage. Exact values TBD — set when implementation begins.
+
+**Node type rules:**
+- STANDARD and BONUS nodes: fully transformable in-session via click
+- TARGET nodes: transformable in-session, visually distinct from STANDARD
+- HEART node: visually distinct, not click-transformable in-session — advancement is a prestige upgrade that persists across runs
+
+**Open questions:**
+- Exact spore cost per stage (tune after first implementation)
+- Whether BONUS nodes have any transformation quirks or behave identically to STANDARD
 
 ---
 
@@ -115,29 +132,71 @@ Each state generates more spores. Full transformation of a room unlocks the next
 
 ## Build TODO
 
-### 1. Animation (highest impact on feel)
+### 1. Animation
 - [x] Pulse shader on active `Line2D` paths
 - [x] Crawl animation when opening a path (mycelium spreading along the line)
-- [ ] Node awakening animation when a node becomes connected — IN PROGRESS: add `draw_radius: float = 24.0` var to NetworkNode, use in `_draw()`, tween 24→38→24 in `set_connected()`
+- [ ] Node awakening animation — tween `draw_radius` 24→38→24 in `set_connected()`
+- [ ] Room complete animation — label animates in rather than snapping visible
 
-### 2. Visual Affordance (makes the puzzle readable)
+### 2. Visual Affordance
 - [ ] Hover highlight on reachable-but-locked paths
 - [ ] Nodes visually distinguish connected vs dormant state
-- [ ] "Can't afford" feedback when clicking a path without enough spores
+- [ ] "Can't afford" feedback — flash path when clicked without enough spores
+- [ ] Path cost visible on hover
+- [ ] Spore generation rate display alongside spore counter
+- [ ] Restart / reset after room complete
 
-### 3. Room Layout (reveals puzzle depth)
+### 3. Room Layout
+- [x] Data-driven room layout system (NodeDefinition, PathDefinition, RoomLayout resources + RoomBuilder)
 - [ ] Redesign DemoRoom with branching paths and real routing decisions
 - [ ] Mix of TARGET and BONUS nodes at meaningful positions
 - [ ] At least one path that requires a routing choice
 
-### 4. Win Condition (gives the room purpose)
-- [ ] Track how many TARGET nodes are connected
-- [ ] Trigger room complete state when all targets connected
-- [ ] Room complete UI feedback
+### 4. Win Condition
+- [x] Track how many TARGET nodes are connected
+- [x] Trigger room complete state when all targets connected
+- [x] Room complete UI feedback
 
-### 5. Background + Atmosphere (cheap wins)
+### 5. Background + Atmosphere
 - [ ] Dark background color on DemoRoom
-- [ ] Basic atmosphere pass once above items are in
+- [ ] Basic atmosphere pass
+
+### 6. Transformation Arc
+- [ ] Add `transformation_stage: int` and `stage_costs: Array[float]` to NetworkNode
+- [ ] Click-to-transform on connected STANDARD, BONUS, and TARGET nodes
+- [ ] Spore rate multipliers per stage (1x / 1.5x / 2x / 3x)
+- [ ] "Can't afford" feedback on node click
+- [ ] Node visual states: Dead → Infected → Consumed → Transformed (palette per DESIGN.md)
+- [ ] Path visual states matching connected node stages
+- [ ] Smooth visual transitions between stages
+- [ ] HEART node locked from in-session transformation (prestige upgrade — defer to prestige loop)
+
+### 7. Procedural Aesthetics
+- [ ] Fungal node clusters — Polygon2D vertices offset by noise
+- [ ] Glow effects via CanvasItem additive blending
+- [ ] Room dressing — silhouette Victorian elements (dead topiaries, iron trellises, cracked urns, bare fencing)
+- [ ] Particle effects on active nodes and paths
+
+### 8. Meta-map
+- [ ] Top-down arboretum overview scene
+- [ ] Rooms represented as selectable locations
+- [ ] Room unlock on completion — adjacent rooms become available
+- [ ] Meta-map visually reflects blight spread room by room
+
+### 9. More Rooms
+- [ ] Design 2–3 additional room layouts with distinct routing puzzles
+- [ ] Implement using RoomBuilder + RoomLayout resources
+
+### 10. Prestige Loop
+- [ ] Seasonal reset — spores, network state, room progress reset
+- [ ] Prestige currency (name TBD) earned at run end
+- [ ] Permanent upgrade tree (contents TBD — design after meta-map validated)
+- [ ] Offline progression — ~50% rate, soft cap at a few minutes' worth
+
+### 11. Deferred
+- [ ] Save / load state
+- [ ] Sound effects
+- [ ] Music
 
 ---
 
