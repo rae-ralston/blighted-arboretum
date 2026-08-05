@@ -1,6 +1,8 @@
 extends Area2D
 class_name NetworkNode
 
+signal node_connected(node_type: NodeType)
+
 enum	 NodeType { HEART, STANDARD, TARGET, BONUS }
 
 @export var node_type: NodeType = NodeType.STANDARD
@@ -33,4 +35,6 @@ func _draw() -> void:
 
 func set_connected(value: bool) -> void:
 	connected = value
+	if value:
+		node_connected.emit(node_type)
 	queue_redraw()

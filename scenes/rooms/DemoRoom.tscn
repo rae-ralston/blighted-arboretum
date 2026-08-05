@@ -23,3 +23,14 @@ path_scene = ExtResource("2_10jpl")
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_ippak")
+
+[node name="RoomCompleteLabel" type="Label" parent="UI" unique_id=1116415999]
+visible = false
+offset_left = 366.0
+offset_top = 246.0
+offset_right = 494.0
+offset_bottom = 269.0
+scale = Vector2(2, 2)
+text = "Room Complete!"
+
+[connection signal="room_complete" from="RoomBuilder" to="UI/RoomCompleteLabel" method="show"]
